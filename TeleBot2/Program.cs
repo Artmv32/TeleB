@@ -5,7 +5,7 @@ namespace TeleBot
 {
     class Program
     {
-        const string botId = @"529680487:AAFP2d-wSsdjlr2Zw8NT52wDnMWOKnItwqQ";
+        const string botId = @"529680487:AAFP2d-wSsdjlr2Zw8NT52wDnMWOKnItwqQ2";
         const string fromOnly = "Artmv32";
         private static int updateId = 0;
 

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeleBot.Visual.Markets;
+using TeleBot.Visual.Messenger;
 using TeleBot.Visual.Model;
 
 namespace TeleBot.Visual
@@ -31,19 +32,21 @@ namespace TeleBot.Visual
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
+            var t = new TelegramBot();
+            await t.Run();
 
-            var bittrex = new BittrexExchange();
-            var coinbase = new BinanceExchange();
-            var btTask = await bittrex.GetActiveOrdersAsync();
-            var cbTask = await coinbase.GetActiveOrdersAsync();
-            //Task.WaitAll(btTask, cbTask);
-            var result = new List<TradeOrder>(btTask);
-            result.AddRange(cbTask);
+            //var bittrex = new BittrexExchange();
+            //var coinbase = new BinanceExchange();
+            //var btTask = await bittrex.GetActiveOrdersAsync();
+            //var cbTask = await coinbase.GetActiveOrdersAsync();
+            ////Task.WaitAll(btTask, cbTask);
+            //var result = new List<TradeOrder>(btTask);
+            //result.AddRange(cbTask);
 
-            var vm = new MainVM();
-            vm.Orders = new ObservableCollection<TradeOrder>(result);
+            //var vm = new MainVM();
+            //vm.Orders = new ObservableCollection<TradeOrder>(result);
 
-            DataContext = vm;
+            //DataContext = vm;
         }
     }
 }

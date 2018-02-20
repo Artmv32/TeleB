@@ -137,6 +137,9 @@
     <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
     </Reference>
+    <Reference Include="Telegram.Bot, Version=13.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Telegram.Bot.13.4.0\lib\net45\Telegram.Bot.dll</HintPath>
+    </Reference>
     <Reference Include="websocket-sharp-customheaders, Version=1.0.2.31869, Culture=neutral, PublicKeyToken=5660b08a1845a91e, processorArchitecture=MSIL">
       <HintPath>..\packages\websocket-sharp-customheaders.1.0.2.31869\lib\net35\websocket-sharp-customheaders.dll</HintPath>
     </Reference>
@@ -174,6 +177,7 @@
     <Compile Include="Markets\BinanceExchange.cs" />
     <Compile Include="Markets\BittrexExchange.cs" />
     <Compile Include="Markets\ExchangeBase.cs" />
+    <Compile Include="Messenger\TelegramBot.cs" />
     <Compile Include="Model\MainVM.cs" />
     <Compile Include="Model\OrderVM.cs" />
     <Compile Include="Model\TelegramMessage.cs" />

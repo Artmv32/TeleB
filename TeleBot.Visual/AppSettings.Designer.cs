@@ -58,5 +58,14 @@ namespace TeleBot.Visual {
                 return ((string)(this["BittrexSecret"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("529680487:AAFP2d-wSsdjlr2Zw8NT52wDnMWOKnItwqQ")]
+        public string TelegramBotId {
+            get {
+                return ((string)(this["TelegramBotId"]));
+            }
+        }
     }
 }
