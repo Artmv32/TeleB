@@ -67,6 +67,8 @@ namespace TeleBot.Visual.Markets
             }
         }
 
+        // --------------------
+
         public override async Task<Balance[]> GetBalancesAsync()
         {
             using (var client = CreateClient())
