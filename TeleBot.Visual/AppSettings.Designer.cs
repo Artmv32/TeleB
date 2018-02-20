@@ -22,5 +22,41 @@ namespace TeleBot.Visual {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("tfu5h4rWwlLyxe8XkSV1E5TqTJMcGWyDYR1gDwxnSPRcUWA5VW5C1dUlYxYzPRhJ")]
+        public string BinanceKey {
+            get {
+                return ((string)(this["BinanceKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("gU6ReQQiXlA5wFskKmfUXpSzNR5N6LgrrPY2xBS6uErnsoLRVqyBzpU09wS1u07s")]
+        public string BinanceSecret {
+            get {
+                return ((string)(this["BinanceSecret"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4c6b9d4bfb88487692bb5e73bd15e63a")]
+        public string BittrexKey {
+            get {
+                return ((string)(this["BittrexKey"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7404432c2d604f45a764ef0bdd7835d9")]
+        public string BittrexSecret {
+            get {
+                return ((string)(this["BittrexSecret"]));
+            }
+        }
     }
 }

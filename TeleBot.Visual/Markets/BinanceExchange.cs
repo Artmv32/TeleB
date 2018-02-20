@@ -7,6 +7,10 @@ namespace TeleBot.Visual.Markets
 {
     public class BinanceExchange : ExchangeBase
     {
+        static BinanceExchange()
+        {
+            BinanceDefaults.SetDefaultApiCredentials(AppSettings.Default.BinanceKey, AppSettings.Default.BinanceSecret);
+        }
 
         private static BinanceClient CreateClient()
         {
@@ -28,7 +32,7 @@ namespace TeleBot.Visual.Markets
             }
         }
 
-        public override async Task<Balance[]> GetBalances()
+        public override async Task<Balance[]> GetBalancesAsync()
         {
             using (var client = CreateClient())
             {
@@ -36,7 +40,7 @@ namespace TeleBot.Visual.Markets
                 if (accountInfo.Success)
                 {
                     var balances = accountInfo.Data.Balances;
-                    var result = balances.Select(x =>
+                    var result = balances.Where(x => x.Total > 0).Select(x =>
                         new Balance
                         {
                             Total = x.Total,

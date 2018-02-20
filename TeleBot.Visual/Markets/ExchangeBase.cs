@@ -23,6 +23,6 @@ namespace TeleBot.Visual.Markets
 
     public abstract class ExchangeBase
     {
-        public abstract Task<Balance[]> GetBalances();
+        public abstract Task<Balance[]> GetBalancesAsync();
     }
 }

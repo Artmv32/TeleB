@@ -13,6 +13,11 @@ namespace TeleBot.Visual.Markets
 
         public Balance[] Balances { get; set; }
 
+        static BittrexExchange()
+        {
+            BittrexDefaults.SetDefaultApiCredentials(AppSettings.Default.BittrexKey, AppSettings.Default.BittrexSecret);
+        }
+
         private static BittrexClient CreateClient()
         {
             return new BittrexClient();
@@ -59,7 +64,7 @@ namespace TeleBot.Visual.Markets
             }
         }
 
-        public override async Task<Balance[]> GetBalances()
+        public override async Task<Balance[]> GetBalancesAsync()
         {
             using (var client = CreateClient())
             {
@@ -67,14 +72,17 @@ namespace TeleBot.Visual.Markets
                 if (result.Success)
                 {
                     var balances = result.Result;
-                    return balances.Select(x =>
-                        new Balance
+                    return balances.Where(x => x.Balance > 0).Select(x =>
                         {
-                            Coin = x.Currency,
-                            Available = x.Available ?? 0,
-                            Locked = x.Pending ?? 0,
-                            Total = x.Balance ?? 0,
-                            Exchange = "Bittrex",
+                            var balance = new Balance
+                            {
+                                Coin = x.Currency,
+                                Available = x.Available ?? 0,
+                                Total = x.Balance ?? 0,
+                                Exchange = "Bittrex",
+                            };
+                            balance.Locked = balance.Total - balance.Available;
+                            return balance;
                         }).ToArray();
                 }
                 return new Balance[0];

@@ -26,14 +26,23 @@ namespace TeleBot.Visual
         public MainWindow()
         {
             InitializeComponent();
+            Loaded += MainWindow_Loaded;
+        }
+
+        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+
+            var bittrex = new BittrexExchange();
+            var coinbase = new BinanceExchange();
+            var btTask = await bittrex.GetBalancesAsync();
+            var cbTask = await coinbase.GetBalancesAsync();
+            //Task.WaitAll(btTask, cbTask);
+            var result = new List<Balance>(btTask);
+            result.AddRange(cbTask);
+
             var vm = new MainVM();
-            vm.Balances = new ObservableCollection<Balance>(new Balance[] 
-            {
-                new Balance { Coin = "BTC", Available = 1, Locked = 2, Total = 3, Exchange = "Binance"},
-                new Balance { Coin = "ETH", Available = 1, Locked = 2, Total = 3, Exchange = "Binance"},
-                new Balance { Coin = "LTC", Available = 1, Locked = 2, Total = 3, Exchange = "Binance"},
-                new Balance { Coin = "BCC", Available = 1, Locked = 2, Total = 3, Exchange = "Binance"},
-            });
+            vm.Balances = new ObservableCollection<Balance>(result);
+
             DataContext = vm;
         }
     }
