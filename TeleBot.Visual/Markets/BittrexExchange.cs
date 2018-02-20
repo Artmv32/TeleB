@@ -7,6 +7,9 @@ using TeleBot.Visual.Model;
 
 namespace TeleBot.Visual.Markets
 {
+    /// <summary>
+    /// Bittrex emulates StopLimitLoss order.
+    /// </summary>
     public class BittrexExchange : ExchangeBase
     {
         public double BtcBalance { get; protected set; }
@@ -86,6 +89,30 @@ namespace TeleBot.Visual.Markets
                         }).ToArray();
                 }
                 return new Balance[0];
+            }
+        }
+
+        public override async Task<TradeOrder[]> GetActiveOrdersAsync()
+        {
+            using (var client = CreateClient())
+            {
+                var result = await client.GetOpenOrdersAsync();
+                if (result.Success)
+                {
+                    return result.Result.Select(x =>
+                        new TradeOrder
+                        {
+                            OrderId = x.OrderUuid.ToString(),
+                            Price = x.Limit,
+                            IsCancelling = x.CancelInitiated,
+                            Side = x.OrderSide != OrderSideExtended.LimitBuy ? OrderType.Buy : OrderType.Sell,
+                            Symbol = x.Exchange,
+                            Time = x.Opened,
+                            Quantity = x.Quantity,
+                            FilledQuantity = x.Quantity - x.QuantityRemaining,
+                        }).ToArray();
+                }
+                return new TradeOrder[0];
             }
         }
     }

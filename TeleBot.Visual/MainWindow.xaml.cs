@@ -34,14 +34,14 @@ namespace TeleBot.Visual
 
             var bittrex = new BittrexExchange();
             var coinbase = new BinanceExchange();
-            var btTask = await bittrex.GetBalancesAsync();
-            var cbTask = await coinbase.GetBalancesAsync();
+            var btTask = await bittrex.GetActiveOrdersAsync();
+            var cbTask = await coinbase.GetActiveOrdersAsync();
             //Task.WaitAll(btTask, cbTask);
-            var result = new List<Balance>(btTask);
+            var result = new List<TradeOrder>(btTask);
             result.AddRange(cbTask);
 
             var vm = new MainVM();
-            vm.Balances = new ObservableCollection<Balance>(result);
+            vm.Orders = new ObservableCollection<TradeOrder>(result);
 
             DataContext = vm;
         }

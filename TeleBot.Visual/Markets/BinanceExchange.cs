@@ -54,5 +54,30 @@ namespace TeleBot.Visual.Markets
                 return new Balance[0];
             }
         }
+
+        public override async Task<TradeOrder[]> GetActiveOrdersAsync()
+        {
+            using (var client = CreateClient())
+            {
+                var openOrders = await client.GetOpenOrdersAsync();
+                if (openOrders.Success)
+                {
+                    return openOrders.Data.Select(x =>
+                        new TradeOrder
+                        {
+                            OrderId = x.OrderId.ToString(),
+                            Price = x.Price,
+                            IsCancelling = x.Status == OrderStatus.PendingCancel,
+                            Side = x.Side == OrderSide.Buy ? OrderType.Buy : OrderType.Sell,
+                            Symbol = x.Symbol,
+                            Time = x.Time,
+                            StopPrice = x.StopPrice,
+                            Quantity = x.OriginalQuantity,
+                            FilledQuantity = x.ExecutedQuantity,
+                        }).ToArray();
+                }
+                return new TradeOrder[0];
+            }
+        }
     }
 }

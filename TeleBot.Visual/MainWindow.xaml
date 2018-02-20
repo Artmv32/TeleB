@@ -16,5 +16,18 @@
                 <DataGridTextColumn Header="Exchange" Binding="{Binding Exchange, Mode=OneWay}"  />
             </DataGrid.Columns>
         </DataGrid>
+
+        <DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="OrderId" Binding="{Binding OrderId, Mode=OneWay}" />
+                <DataGridTextColumn Header="Price" Binding="{Binding Price, Mode=OneWay}"  />
+                <DataGridTextColumn Header="Side"  Binding="{Binding Side, Mode=OneWay}" />
+                <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol, Mode=OneWay}"  />
+                <DataGridTextColumn Header="Time" Binding="{Binding Time, Mode=OneWay}"  />
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity, Mode=OneWay}"  />
+                <DataGridTextColumn Header="FilledQuantity" Binding="{Binding FilledQuantity, Mode=OneWay}"  />
+                <DataGridTextColumn Header="IsCancelling" Binding="{Binding IsCancelling, Mode=OneWay}"  />
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

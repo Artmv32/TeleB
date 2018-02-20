@@ -16,11 +16,10 @@ namespace TeleBot.Visual.Model
 
         public double CurrentBtcPrice { get; set; }
 
-        public ObservableCollection<Balance> Balances { get; set; }
+        public ObservableCollection<TradeOrder> Orders { get; set; }
 
         public MainVM()
         {
-            Balances = new ObservableCollection<Balance>();
         }
         
         public void PlaceOrder(OrderVM order)
