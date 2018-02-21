@@ -7,6 +7,33 @@
         mc:Ignorable="d"
         Title="MainView" Height="300" Width="300">
     <Grid>
-        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <ListBox ItemsSource="{Binding Signals}" MinWidth="300">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Currency, Mode=OneTime}" />
+                            <TextBlock Text="{Binding BuyPriceMin, Mode=OneTime}" />
+                            <TextBlock Text="{Binding BuyPriceMax, Mode=OneTime}" />
+                            <TextBlock Text="{Binding StopLoss, Mode=OneTime}" />
+                            <TextBlock Text="{Binding Term, Mode=OneTime}" />
+                            <ListBox ItemsSource="{Binding SellPrice, Mode=OneTime}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <ListBox ItemsSource="{Binding NewsFeed}" MinWidth="200">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Created, Mode=OneTime}" />
+                            <TextBlock Text="{Binding Text, Mode=OneTime}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
     </Grid>
 </Window>

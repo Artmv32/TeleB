@@ -75,7 +75,7 @@ namespace TeleBot
                 return TradeSignal.Empty;
             }
 
-            var lines = message.Split(new[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var lines = message.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 
             var result = new TradeSignal();
             int i = 0;

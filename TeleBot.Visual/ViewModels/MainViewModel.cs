@@ -23,7 +23,7 @@ namespace TeleBot.Visual.ViewModels
         {
             NewsFeed = new ObservableCollection<TelegramMessage>();
             Signals = new ObservableCollection<SignalVM>();
-
+            
             _telegramBot.OnMessage += OnMessage;
             _telegramBot.OnSignal += OnSignal;
             _telegramBot.Initialize();

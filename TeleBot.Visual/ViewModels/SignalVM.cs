@@ -28,8 +28,9 @@ namespace TeleBot.Visual.ViewModel
             {
                 Currency = signal.Currency;
                 BuyPriceMin = (decimal)signal.BuyPriceMin;
-                BuyPriceMax = (decimal)signal.BuyPriceMax;
-                StopLoss = (decimal)signal.StopLoss;
+                BuyPriceMax = (decimal)signal.BuyPriceMax;                
+                StopLoss = (decimal) (double.IsNaN(signal.StopLoss) ? 0 : signal.StopLoss);
+                
                 Term = signal.Term;
                 if (signal.SellPrice != null)
                 {
