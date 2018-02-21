@@ -17,6 +17,8 @@ namespace TeleBot.Visual.ViewModel
 
         public Term Term { get; set; }
 
+        public float PotentialGain { get; set; }
+
         public SignalVM()
         {
 
@@ -35,8 +37,28 @@ namespace TeleBot.Visual.ViewModel
                 if (signal.SellPrice != null)
                 {
                     SellPrice = signal.SellPrice.Select(x => (decimal)x).ToArray();
+                    UpdatePotentialGain();
                 }
             }
+        }
+
+        private void UpdatePotentialGain()
+        {
+            if (SellPrice?.Any() == false)
+            {
+                return;
+            }
+            const decimal invested = 0.01M; // BTC
+            decimal investedCoins = invested / BuyPriceMax;
+            decimal sellFraction = investedCoins / SellPrice.Length;
+            decimal expectedGain = 0;
+            foreach (var price in SellPrice)
+            {
+                expectedGain += price * sellFraction;
+            }
+
+            decimal diff = expectedGain - invested;
+            PotentialGain = (float)(diff / invested);
         }
     }
 }

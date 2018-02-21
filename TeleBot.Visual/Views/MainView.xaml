@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeleBot.Visual.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="300" Width="300">
+        Title="MainView" Height="924.804" Width="705.236">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-            <ListBox ItemsSource="{Binding Signals}" MinWidth="300">
+            <ListBox ItemsSource="{Binding Signals}" MinWidth="600">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -17,7 +17,8 @@
                             <TextBlock Text="{Binding BuyPriceMax, Mode=OneTime}" />
                             <TextBlock Text="{Binding StopLoss, Mode=OneTime}" />
                             <TextBlock Text="{Binding Term, Mode=OneTime}" />
-                            <ListBox ItemsSource="{Binding SellPrice, Mode=OneTime}" />
+                            <TextBlock Text="{Binding PotentialGain, Mode=OneTime}" />
+                            <!--<ListBox ItemsSource="{Binding SellPrice, Mode=OneTime}" />-->
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
