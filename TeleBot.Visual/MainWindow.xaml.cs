@@ -1,21 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using TeleBot.Visual.Markets;
-using TeleBot.Visual.Messenger;
-using TeleBot.Visual.Model;
+﻿using System.Windows;
+using TeleBot.Visual.ViewModel;
+using TeleBot.Visual.ViewModels;
 
 namespace TeleBot.Visual
 {
@@ -30,10 +15,8 @@ namespace TeleBot.Visual
             Loaded += MainWindow_Loaded;
         }
 
-        private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var t = new TelegramBot();
-            await t.Run();
 
             //var bittrex = new BittrexExchange();
             //var coinbase = new BinanceExchange();
@@ -43,10 +26,9 @@ namespace TeleBot.Visual
             //var result = new List<TradeOrder>(btTask);
             //result.AddRange(cbTask);
 
-            //var vm = new MainVM();
-            //vm.Orders = new ObservableCollection<TradeOrder>(result);
+            var vm = new MainViewModel();
 
-            //DataContext = vm;
+            DataContext = vm;
         }
     }
 }

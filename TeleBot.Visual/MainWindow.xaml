@@ -7,7 +7,35 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <DataGrid ItemsSource="{Binding Balances}" AutoGenerateColumns="False">
+        <StackPanel Orientation="Horizontal">
+            <ListBox ItemsSource="{Binding Signals}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Currency, Mode=OneTime}" />
+                            <TextBlock Text="{Binding BuyPriceMin, Mode=OneTime}" />
+                            <TextBlock Text="{Binding BuyPriceMax, Mode=OneTime}" />
+                            <TextBlock Text="{Binding StopLoss, Mode=OneTime}" />
+                            <TextBlock Text="{Binding Term, Mode=OneTime}" />
+                            <ListBox ItemsSource="{Binding SellPrice, Mode=OneTime}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
+            <ListBox ItemsSource="{Binding NewsFeed}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Created, Mode=OneTime}" />
+                            <TextBlock Text="{Binding Text, Mode=OneTime}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <!--<DataGrid ItemsSource="{Binding Balances}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Coin" Binding="{Binding Coin, Mode=OneWay}" />
                 <DataGridTextColumn Header="Available" Binding="{Binding Available, Mode=OneWay}"  />
@@ -15,9 +43,9 @@
                 <DataGridTextColumn Header="Total" Binding="{Binding Total, Mode=OneWay}"  />
                 <DataGridTextColumn Header="Exchange" Binding="{Binding Exchange, Mode=OneWay}"  />
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
 
-        <DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False">
+        <!--<DataGrid ItemsSource="{Binding Orders}" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="OrderId" Binding="{Binding OrderId, Mode=OneWay}" />
                 <DataGridTextColumn Header="Price" Binding="{Binding Price, Mode=OneWay}"  />
@@ -28,6 +56,6 @@
                 <DataGridTextColumn Header="FilledQuantity" Binding="{Binding FilledQuantity, Mode=OneWay}"  />
                 <DataGridTextColumn Header="IsCancelling" Binding="{Binding IsCancelling, Mode=OneWay}"  />
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
     </Grid>
 </Window>

@@ -138,8 +138,7 @@ namespace TeleBot.Tests
             {
                 message = reader.ReadToEnd();
             }
-            var target = new MessageParser();
-            return target.ProcessMessage(message);
+            return MessageParser.ProcessMessage(message);
         }
     }
 }

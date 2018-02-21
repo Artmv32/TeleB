@@ -68,7 +68,7 @@ namespace TeleBot
             return text;
         }
 
-        public TradeSignal ProcessMessage(string message)
+        public static TradeSignal ProcessMessage(string message)
         {
             if (string.IsNullOrWhiteSpace(message))
             {

@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Telegram.Bot;
+using Telegram.Bot.Args;
 
 namespace TeleBot.Visual.Messenger
 {
@@ -11,18 +8,29 @@ namespace TeleBot.Visual.Messenger
     {
         private readonly TelegramBotClient _botClient;
 
+        public event Action<TradeSignal> OnSignal;
+
+        public event Action<string, DateTime> OnMessage;
+
         public TelegramBot()
         {
             _botClient = new TelegramBotClient(AppSettings.Default.TelegramBotId);
+            _botClient.OnMessage += _botClient_OnMessage;
         }
 
-        public async Task Initialize()
+        private void _botClient_OnMessage(object sender, MessageEventArgs e)
         {
-            _b
+            var tradeSignal = MessageParser.ProcessMessage(e.Message.Text);
+            if (tradeSignal != TradeSignal.Empty)
+            {
+                OnSignal?.Invoke(tradeSignal);
+            }
+            OnMessage?.Invoke(e.Message.Text, e.Message.Date);
         }
 
-        public async Task Run()
+        public void Initialize()
         {
-        }
+            _botClient.StartReceiving();
+        }        
     }
 }

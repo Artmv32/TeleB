@@ -3,7 +3,7 @@ using Bittrex.Net.Objects;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using TeleBot.Visual.Model;
+using TeleBot.Visual.ViewModel;
 
 namespace TeleBot.Visual.Markets
 {
