@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="TeleBot.Visual.Views.TelegramFeedView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TeleBot.Visual.Views"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d" 
+           Background="CornflowerBlue">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="CornflowerBlue" HorizontalAlignment="Stretch">
+            <TextBlock Text="Chat" Foreground="White"/>
+            <Button HorizontalAlignment="Right" Width="20" Height="20" cal:Message.Attach="[Event Click] = [Action Toggle()]">
+                <TextBlock Text="_" />
+            </Button>
+        </Grid>
+        <ListView Grid.Row="1" ItemsSource="{Binding Messages, Mode=OneWay}" Visibility="{Binding IsVisible, Converter={StaticResource boolToVisual}}" HorizontalAlignment="Stretch" Padding="2,0,2,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock Text="{Binding Created, Mode=OneTime}" />
+                        <TextBlock Text="{Binding Text, Mode=OneTime}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</UserControl>

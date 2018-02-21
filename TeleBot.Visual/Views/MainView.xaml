@@ -3,11 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:cal="http://www.caliburnproject.org"        
         xmlns:local="clr-namespace:TeleBot.Visual.Views"
         mc:Ignorable="d"
-        Title="MainView" Height="924.804" Width="705.236">
+        Title="MainView" >
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+        <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
             <ListBox ItemsSource="{Binding Signals}" MinWidth="600">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -18,7 +19,7 @@
                             <TextBlock Text="{Binding StopLoss, Mode=OneTime}" />
                             <TextBlock Text="{Binding Term, Mode=OneTime}" />
                             <TextBlock Text="{Binding PotentialGain, Mode=OneTime}" />
-                            <!--<ListBox ItemsSource="{Binding SellPrice, Mode=OneTime}" />-->
+                            --><!--<ListBox ItemsSource="{Binding SellPrice, Mode=OneTime}" />--><!--
                         </StackPanel>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -34,7 +35,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-        </StackPanel>
-
+        </StackPanel>-->
+        <local:TelegramFeedView DataContext="{Binding TelegramChat, Mode=OneWay}" MinHeight="30" MinWidth="40" Width="190" Height="300" HorizontalAlignment="Right" VerticalAlignment="Bottom" Padding="0,0,10,0" />
     </Grid>
 </Window>

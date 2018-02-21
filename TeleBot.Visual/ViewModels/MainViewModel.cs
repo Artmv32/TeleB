@@ -12,7 +12,7 @@ namespace TeleBot.Visual.ViewModels
     {
         private readonly TelegramBot _telegramBot = new TelegramBot();
 
-        public ObservableCollection<TelegramMessage> NewsFeed { get; set; }
+        public TelegramFeedViewModel TelegramChat { get; set; }
 
         public ObservableCollection<TradeOrder> OpenOrders { get; set; }
 
@@ -21,7 +21,7 @@ namespace TeleBot.Visual.ViewModels
 
         public MainViewModel()
         {
-            NewsFeed = new ObservableCollection<TelegramMessage>();
+            TelegramChat = new TelegramFeedViewModel();
             Signals = new ObservableCollection<SignalVM>();
             
             _telegramBot.OnMessage += OnMessage;
@@ -41,7 +41,7 @@ namespace TeleBot.Visual.ViewModels
         {
             Execute.OnUIThread(() =>
             {
-                NewsFeed.Add(new TelegramMessage { Created = date, Text = message });
+                TelegramChat.Messages.Add(new TelegramMessage { Created = date, Text = message });
             });
         }
 
