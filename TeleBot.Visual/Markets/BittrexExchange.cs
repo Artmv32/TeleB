@@ -16,6 +16,8 @@ namespace TeleBot.Visual.Markets
 
         public Balance[] Balances { get; set; }
 
+        public override bool SupportsLimitStopLoss => false;
+
         static BittrexExchange()
         {
             BittrexDefaults.SetDefaultApiCredentials(AppSettings.Default.BittrexKey, AppSettings.Default.BittrexSecret);
@@ -32,6 +34,7 @@ namespace TeleBot.Visual.Markets
             {
                 OrderSide orderSide = order == OrderType.Buy ? OrderSide.Buy : OrderSide.Sell;
                 var placedOrder = await client.PlaceOrderAsync(orderSide, pair, quantity, rate);
+                //client.PlaceConditionalOrder()
                 if (placedOrder.Success)
                 {
                     return placedOrder.Result.ToString();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace TeleBot.Visual.Markets
@@ -37,8 +38,17 @@ namespace TeleBot.Visual.Markets
 
     public abstract class ExchangeBase
     {
+        public abstract bool SupportsLimitStopLoss { get; }
+
         public abstract Task<Balance[]> GetBalancesAsync();
 
         public abstract Task<TradeOrder[]> GetActiveOrdersAsync();
+
+        public virtual Task<string> PlaceLimitStopLossOrderAsync(string pair, OrderType order, decimal quantity, decimal rate, decimal stopLoss)
+        {
+            throw new NotImplementedException();
+        }
+
+        public abstract Task<string> PlaceOrderAsync(string pair, OrderType order, decimal quantity, decimal rate);
     }
 }

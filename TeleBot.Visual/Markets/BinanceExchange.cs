@@ -7,6 +7,8 @@ namespace TeleBot.Visual.Markets
 {
     public class BinanceExchange : ExchangeBase
     {
+        public override bool SupportsLimitStopLoss => true;
+
         static BinanceExchange()
         {
             BinanceDefaults.SetDefaultApiCredentials(AppSettings.Default.BinanceKey, AppSettings.Default.BinanceSecret);
@@ -23,7 +25,7 @@ namespace TeleBot.Visual.Markets
             using (var client = CreateClient())
             {
                 pair = pair.Replace("-", string.Empty);
-                var orderResult = await client.PlaceOrderAsync("BNBBTC", orderSide, Binance.Net.Objects.OrderType.Limit, quantity, price: rate, timeInForce: TimeInForce.GoodTillCancel);
+                var orderResult = await client.PlaceOrderAsync(pair, orderSide, Binance.Net.Objects.OrderType.Limit, quantity, price: rate, timeInForce: TimeInForce.GoodTillCancel);
                 if (orderResult.Success)
                 {
                     return orderResult.Data.ClientOrderId;

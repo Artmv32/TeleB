@@ -155,7 +155,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Services\TradeService.cs" />
+    <Compile Include="ViewModels\TradeViewModel.cs" />
     <Compile Include="ViewModels\TelegramFeedViewModel.cs" />
+    <Compile Include="ViewModels\TradeOrderViewModel.cs" />
     <Compile Include="Views\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>

@@ -44,15 +44,13 @@ namespace TeleBot.Visual.ViewModels
                 TelegramChat.Messages.Add(new TelegramMessage { Created = date, Text = message });
             });
         }
-
-        public void PlaceOrder(OrderVM order)
+        
+        public void CreateTrade(SignalVM signal)
         {
-
-        }
-
-        public void CancelOrder(OrderVM order)
-        {
-
+            if (signal != null)
+            {
+                //signal.
+            }
         }
     }
 }

@@ -62,8 +62,6 @@ namespace TeleBot.Visual.ViewModel
             }
         }
 
-        public double[] Sell { get; set; }
-
         public OrderState State { get; set; }
 
         public double PotentialGain { get; set; }
